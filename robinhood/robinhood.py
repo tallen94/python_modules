@@ -55,7 +55,7 @@ class Robinhood:
             'expires_in': 86400,
             'device_token': '4ba299fb-0fa3-4551-bb9c-04fefa415307'
         }
-        return self.post(url, body)
+        return self.post(url, body).json()
 
     def get_symbols(self, args):
         symbols = args["symbols"]
@@ -86,12 +86,12 @@ class Robinhood:
     def user(self, args):
         token = args['token']
         url = "user/"
-        return self.auth_get(url, token)
+        return self.auth_get(url, token).json()
 
     def investment_profile(self, args):
         token = args['token']
         url = "user/investment_profile"
-        return self.auth_get(url, token)
+        return self.auth_get(url, token).json()
 
     def positions(self, args):
         token = args["token"]
@@ -122,12 +122,12 @@ class Robinhood:
     def user_id(self, args):
         token = args["token"]
         url = "user/id/"
-        return self.auth_get(url, token)
+        return self.auth_get(url, token).json()
 
     def portfolios(self, args):
         token = args["token"]
         url = "portfolios/"
-        return self.auth_get(url, token)
+        return self.auth_get(url, token).json()
 
     def auth_post(self, url, token, body, headers = DEFAULT_HEADERS):
         headers['authorization'] = 'Bearer ' + token
