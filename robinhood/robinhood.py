@@ -37,7 +37,8 @@ class Robinhood:
             "positions": self.positions,
             "get_current_positions": self.get_current_positions,
             "user_id": self.user_id,
-            "portfolios": self.portfolios
+            "portfolios": self.portfolios,
+            "new_on_robinhood": self.new_on_robinhood
         }
         
     def run_command(self, name, args):
@@ -113,7 +114,7 @@ class Robinhood:
             ret.append(self.raw_get(item).json())
         return ret
 
-    def new_on_robinhood(self):
+    def new_on_robinhood(self, args):
         url = "midlands/tags/tag/new-on-robinhood/"
         instruments = self.get(url).json()["instruments"]
         return self.hydrate_list(instruments)
